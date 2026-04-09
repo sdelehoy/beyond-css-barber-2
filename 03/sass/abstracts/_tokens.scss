@@ -3,6 +3,17 @@
 @use "sizes" as *;
 
 $active-theme: $light;
+$enable-media-query-dark-mode: true;
+
+@if ($enable-media-query-dark-mode) {
+    @media (prefers-color-scheme: dark) {
+      @each $color, $shade-map in $dark {
+        @each $shade, $value in $shade-map {
+          --#{$color}-#{$shade}: #{$value};
+        }
+      }
+    }
+  }
 
 // Contextual
 $color-text-default: $color-primary-700;
